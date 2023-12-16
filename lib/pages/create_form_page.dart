@@ -39,7 +39,9 @@ class _CreateFormPageState extends State<CreateFormPage> {
         FocusManager.instance.primaryFocus?.unfocus();
       },
       child: Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(
+          title: const Text("Add a New Questions"),
+        ),
         body: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(

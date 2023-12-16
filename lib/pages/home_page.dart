@@ -20,7 +20,20 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text("Forms")),
+        appBar: AppBar(
+          title: const Text("Form"),
+          actions: [
+            if (formDataList.isNotEmpty)
+              IconButton(
+                onPressed: () {
+                  formDataList.clear();
+                  keys.clear();
+                  setState(() {});
+                },
+                icon: Icon(Icons.delete_forever),
+              )
+          ],
+        ),
         floatingActionButton: Padding(
           padding: const EdgeInsets.only(bottom: 36),
           child: Column(
