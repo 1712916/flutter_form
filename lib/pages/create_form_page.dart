@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_form/entity/form_data.dart';
 import 'package:flutter_form/entity/form_type.dart';
 import 'package:flutter_form/helper/show_bottom_sheet_helper.dart';
 import 'package:flutter_form/widgets/dropdown_button.dart';
@@ -14,7 +15,9 @@ List<FormType> getFormList() {
 }
 
 class CreateFormPage extends StatefulWidget with ShowBottomSheet {
-  const CreateFormPage({Key? key}) : super(key: key);
+  const CreateFormPage({Key? key, required this.onSubmit}) : super(key: key);
+
+  final ValueChanged<FormData> onSubmit;
 
   @override
   State<CreateFormPage> createState() => _CreateFormPageState();
@@ -91,6 +94,10 @@ class _CreateFormPageState extends State<CreateFormPage> {
                   onPressed: () {
                     //todo: handle submit
                     print(formKey.currentState?.getFormData().toMap());
+                    try {
+                      widget.onSubmit(formKey.currentState!.getFormData());
+                      Navigator.of(context).pop();
+                    } catch (e) {}
                   },
                   child: Container(
                     alignment: Alignment.center,

@@ -11,7 +11,7 @@ class MultipleSelectionFormWidget extends StatefulWidget {
 
 class MultipleSelectionFormWidgetState extends FormWidgetState<MultipleSelectionFormWidget> {
   @override
-  String get type => SingleSelectForm().name;
+  String get type => MultipleSelectForm().name;
 
   @override
   int? get maxAnswer => 5;
