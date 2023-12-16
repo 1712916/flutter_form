@@ -3,6 +3,7 @@ import 'package:flutter_form/entity/form_data.dart';
 import 'package:flutter_form/pages/create_form_page.dart';
 import 'package:flutter_form/pages/view_user_input_page.dart';
 import 'package:flutter_form/widgets/column_start.dart';
+import 'package:flutter_form/widgets/input_form_widget/input_form_factory.dart';
 import 'package:flutter_form/widgets/input_form_widget/input_form_widget.dart';
 
 class HomePage extends StatefulWidget {
@@ -89,7 +90,10 @@ class _HomePageState extends State<HomePage> {
                             children: [
                               Text("Question ${i + 1}:"),
                               const SizedBox(height: 8),
-                              InputFormWidget(key: keys[i], formData: formDataList[i]),
+                              InputFormFactory(
+                                formKey: keys[i],
+                                data: formDataList[i],
+                              ),
                             ],
                           ),
                         )

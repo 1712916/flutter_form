@@ -5,7 +5,14 @@ import 'package:flutter_form/widgets/form_widget/form_widget.dart';
 import 'package:flutter_form/widgets/input_form_widget/input_form_widget.dart';
 import 'package:flutter_form/widgets/selection.dart';
 
-class SingleInputFormWidgetState extends InputFormWidgetState<InputFormWidget> {
+class SingleInputFormWidget extends InputFormWidget {
+  const SingleInputFormWidget({super.key, required super.formData});
+
+  @override
+  State<StatefulWidget> createState() => SingleInputFormWidgetState();
+}
+
+class SingleInputFormWidgetState extends InputFormWidgetState<SingleInputFormWidget> {
   String? _currentSelect;
 
   @override

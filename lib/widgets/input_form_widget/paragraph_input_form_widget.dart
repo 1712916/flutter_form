@@ -6,7 +6,14 @@ import 'package:flutter_form/widgets/form_widget/form_widget.dart';
 import 'package:flutter_form/widgets/input_form_widget/input_form_widget.dart';
 import 'package:flutter_form/widgets/text_field.dart';
 
-class ParagraphInputFormWidgetState extends InputFormWidgetState<InputFormWidget> {
+class ParagraphInputFormWidget extends InputFormWidget {
+  const ParagraphInputFormWidget({super.key, required super.formData});
+
+  @override
+  State<ParagraphInputFormWidget> createState() => ParagraphInputFormWidgetState();
+}
+
+class ParagraphInputFormWidgetState extends InputFormWidgetState<ParagraphInputFormWidget> {
   final _textEditController = TextEditingController();
 
   @override

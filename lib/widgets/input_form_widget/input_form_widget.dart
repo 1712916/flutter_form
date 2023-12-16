@@ -10,22 +10,10 @@ import 'package:flutter_form/widgets/text_field.dart';
 import 'paragraph_input_form_widget.dart';
 import 'single_input_form_widget.dart';
 
-class InputFormWidget extends StatefulWidget {
+abstract class InputFormWidget extends StatefulWidget {
   final FormData formData;
 
   const InputFormWidget({super.key, required this.formData});
-
-  @override
-  State<StatefulWidget> createState() {
-    switch (FormType.getFormFromString(formData.type)) {
-      case ParagraphForm():
-        return ParagraphInputFormWidgetState();
-      case SingleSelectForm():
-        return SingleInputFormWidgetState();
-      case MultipleSelectForm():
-        return MultiSeInputFormWidgetState();
-    }
-  }
 }
 
 abstract class InputFormWidgetState<T extends InputFormWidget> extends State<T> {
