@@ -96,8 +96,18 @@ class _CreateFormPageState extends State<CreateFormPage> {
                     //todo: handle submit
                     print(formKey.currentState?.getFormData().toMap());
                     try {
-                      widget.onSubmit(formKey.currentState!.getFormData());
-                      Navigator.of(context).pop();
+                      if (formKey.currentState!.isValid()) {
+                        widget.onSubmit(formKey.currentState!.getFormData());
+                        Navigator.of(context).pop();
+                      } else {
+                        ScaffoldMessenger.of(context).clearSnackBars();
+
+                        const snackBar = SnackBar(
+                          content: Text('Your input is invalid! Please check again!'),
+                        );
+
+                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                      }
                     } catch (e) {}
                   },
                   child: Container(

@@ -54,6 +54,22 @@ abstract class FormWidgetState<T extends StatefulWidget> extends State<T> {
     );
   }
 
+  bool isValid() {
+    if (_qController.text.trim().isEmpty) {
+      return false;
+    }
+
+    for (var a in _ansController) {
+      if (a.text.trim().isEmpty) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+  void validate() {}
+
   Widget buildQuestion() {
     return ColumnStart(
       children: [

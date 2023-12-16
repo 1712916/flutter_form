@@ -14,6 +14,9 @@ class ParagraphFormWidgetState extends FormWidgetState<ParagraphFormWidget> {
   String get type => ParagraphForm().name;
 
   @override
+  int get defaultAnswer => 0;
+
+  @override
   Widget buildOtherAnswer() {
     return const SizedBox();
   }
