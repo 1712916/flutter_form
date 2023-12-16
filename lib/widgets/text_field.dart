@@ -4,9 +4,13 @@ class CustomTextField extends StatelessWidget {
   const CustomTextField({
     Key? key,
     required this.controller,
+    this.minLines,
+    this.maxLines,
   }) : super(key: key);
 
   final TextEditingController controller;
+  final int? minLines;
+  final int? maxLines;
 
   @override
   Widget build(BuildContext context) {
@@ -32,8 +36,8 @@ class CustomTextField extends StatelessWidget {
           borderRadius: BorderRadius.circular(4),
         ),
       ),
-      minLines: 2,
-      maxLines: 5,
+      minLines: minLines,
+      maxLines: maxLines,
     );
   }
 }

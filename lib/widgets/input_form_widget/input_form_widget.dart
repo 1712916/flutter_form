@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form/entity/form_data.dart';
 import 'package:flutter_form/entity/form_type.dart';
+import 'package:flutter_form/entity/user_answer_data.dart';
 import 'package:flutter_form/widgets/column_start.dart';
 import 'package:flutter_form/widgets/form_widget/paragraph_form_widget.dart';
 import 'package:flutter_form/widgets/input_form_widget/multiple_input_form_widget.dart';
@@ -32,15 +33,30 @@ abstract class InputFormWidgetState<T extends InputFormWidget> extends State<T> 
 
   FormData get formData => widget.formData;
 
+  UserAnswerData get getUserAnswerData;
+
+  final otherTextEditingController = TextEditingController();
+
+  @override
+  void dispose() {
+    otherTextEditingController.dispose();
+    super.dispose();
+  }
+
   Widget buildQuestion() {
     return ColumnStart(
       children: [
         RichText(
           text: TextSpan(
+            style: theme.textTheme.titleMedium?.copyWith(
+              fontWeight: FontWeight.w700,
+            ),
             children: [
               if (formData.isRequired)
                 TextSpan(text: "* ", style: theme.textTheme.bodyLarge?.copyWith(color: theme.colorScheme.error)),
-              TextSpan(text: "Q: ${widget.formData.question}", style: theme.textTheme.bodyLarge)
+              TextSpan(
+                text: "Q: ${widget.formData.question}",
+              )
             ],
           ),
         ),
@@ -56,9 +72,12 @@ abstract class InputFormWidgetState<T extends InputFormWidget> extends State<T> 
     }
     return ColumnStart(
       children: [
-        Text("Other answer:"),
+        Text(
+          "Other answer:",
+          style: theme.textTheme.labelLarge,
+        ),
         const SizedBox(height: 8),
-        CustomTextField(controller: TextEditingController()),
+        CustomTextField(controller: otherTextEditingController),
       ],
     );
   }

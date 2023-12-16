@@ -62,7 +62,11 @@ abstract class FormWidgetState<T extends StatefulWidget> extends State<T> {
           style: theme.textTheme.bodyLarge,
         ),
         const SizedBox(height: 10),
-        CustomTextField(controller: _qController),
+        CustomTextField(
+          controller: _qController,
+          minLines: 2,
+          maxLines: 5,
+        ),
       ],
     );
   }

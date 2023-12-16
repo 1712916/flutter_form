@@ -39,6 +39,7 @@ class _CreateFormPageState extends State<CreateFormPage> {
         FocusManager.instance.primaryFocus?.unfocus();
       },
       child: Scaffold(
+        appBar: AppBar(),
         body: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
